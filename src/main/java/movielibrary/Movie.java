@@ -34,4 +34,25 @@ public class Movie {
 	public String getPlot() {
 		return this.plot;
 	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public void setReleaseYear(int releaseYear) {
+		this.releaseYear = releaseYear;
+	}
+	
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	
+	public void setActors(String actors) {
+		this.actors = actors;
+	}
+	
+	public void setPlot(String plot) {
+		this.plot = plot;
+	}
+	
 }
