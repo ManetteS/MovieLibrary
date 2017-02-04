@@ -10,9 +10,24 @@ public class Movie {
 	public Movie(String title, int releaseYear, String genre, String actors, String plot) {
 		this.title = title;
 		this.releaseYear = releaseYear;
-		this.genre = genre;
-		this.actors = actors;
-		this.plot = plot;
+		
+		if (genre.equals("")) {
+			this.genre = "unknown";
+		} else {
+			this.genre = genre;
+		}
+		
+		if (actors.equals("")) {
+			this.actors = "unknown";
+		} else {
+			this.actors = actors;
+		}
+		
+		if (plot.equals("")) {
+			this.plot = "unknown";
+		} else {
+			this.plot = plot;
+		}
 	}
 	
 	public String getTitle() {

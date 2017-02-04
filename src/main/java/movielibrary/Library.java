@@ -42,8 +42,13 @@ public class Library {
 	/**
 	 * Adds a movie to list "movies", created from the five arguments.
 	 */
-	public void addMovie(String title, int releaseYear, String genre, String actors, String plot) {
-		this.movies.add(new Movie(title, releaseYear, genre, actors, plot));
+	public boolean addMovie(String title, int releaseYear, String genre, String actors, String plot) {
+		if (title.equals("") || releaseYear == 0) {
+			return false;
+		} else {
+			this.movies.add(new Movie(title, releaseYear, genre, actors, plot));
+			return true;
+		}
 	}
 	
 	/**
