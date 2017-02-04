@@ -1,5 +1,7 @@
 package movielibrary;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +14,7 @@ public class LibraryController {
 	
 	@Resource
 	private Library library = new Library();
-
+	
 	@RequestMapping("/")
     public String showLibrary() {
         String result = "Current movies: ";
@@ -65,6 +67,25 @@ public class LibraryController {
         	return "The movie '"+title+"' has been added.";
         } else {
         	return "The title and/or the release year were missing. The movie has not been added.";
+        }
+    }
+
+	@RequestMapping("/byYear")
+    public String retrieveByYear(@RequestParam(value="year", defaultValue="") String year) {
+        try {
+        	int releaseYear = Integer.parseInt(year);
+        	ArrayList<Movie> movies = library.getByYear(releaseYear);
+        	if (movies.size() > 0) {
+        		String result = "Movies from "+releaseYear+" : ";
+        		for (Movie movie : movies) {
+                	result += movie.toString()+" | ";
+                };
+                return result;
+        	} else {
+        		return "There is currently no movie from this year in memory.";
+        	}
+        } catch(NumberFormatException er) {
+        	return "The specified year was incorrect.";
         }
     }
 }

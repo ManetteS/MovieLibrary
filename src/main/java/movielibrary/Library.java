@@ -103,4 +103,17 @@ public class Library {
 			return false;
 		}
 	}
+	
+	/**
+	 * Returns the list of every movie from list "movies" released the same year as the argument.
+	 */
+	public ArrayList<Movie> getByYear(int releaseYear) {
+		ArrayList<Movie> result = new ArrayList<Movie>();
+		for (Movie movie : this.movies) {
+			if (movie.getReleaseYear() == releaseYear) {
+				result.add(movie);
+			}
+		}
+		return result;
+	}
 }
