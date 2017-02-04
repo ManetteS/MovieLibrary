@@ -54,4 +54,14 @@ public class LibraryController {
         	return "This movie does not exist.";
         }
     }
+	
+	@RequestMapping("/add")
+    public String add(@RequestParam(value="title", defaultValue="") String title,
+    		@RequestParam(value="releaseYear", defaultValue="0") int releaseYear,
+    		@RequestParam(value="genre", defaultValue="") String genre,
+    		@RequestParam(value="actors", defaultValue="") String actors,
+    		@RequestParam(value="plot", defaultValue="") String plot) {
+        library.addMovie(title,releaseYear,genre,actors,plot);
+        return "The movie '"+title+"' has been added.";
+    }
 }
