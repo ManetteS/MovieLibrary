@@ -55,4 +55,12 @@ public class Movie {
 		this.plot = plot;
 	}
 	
+	public String info() {
+		return this.getTitle()+" ("+this.getReleaseYear()+", "+this.getGenre()+") [casting: "+this.getActors()+"]: "+this.getPlot();
+	}
+	
+	@Override
+	public String toString() {
+		return this.getTitle()+" ("+this.getReleaseYear()+")";
+	}
 }

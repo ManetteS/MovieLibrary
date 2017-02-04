@@ -14,15 +14,15 @@ public class LibraryController {
 
 	@RequestMapping("/")
     public String showLibrary() {
-        String result = "Current movies :\n";
+        String result = "Current movies: ";
 		for (Movie movie : library.display()) {
-        	result += movie.toString()+"\n";
+        	result += movie.toString()+" | ";
         };
         return result;
     }
 
 	@RequestMapping("/{title}")
     public String retrieve(@PathVariable(value = "title") String title) {
-        return library.retrieveMovie(title).toString();
+        return library.retrieveMovie(title).info();
     }
 }
