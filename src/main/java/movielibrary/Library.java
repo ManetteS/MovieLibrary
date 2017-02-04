@@ -17,10 +17,16 @@ public class Library {
 		this.movies.add(new Movie("The Good, the Bad and the Ugly",1966,"Western","Clint Eastwood; Eli Wallach; Lee Van Cleef","A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery."));
 	}
 	
-	public ArrayList<Movie> display() {
+	/**
+	 * Returns the complete list of movies.
+	 */
+	public ArrayList<Movie> getAll() {
 		return movies;
 	}
 	
+	/**
+	 * Returns the first movie in list "movies" with the same title as the argument "title".
+	 */
 	private Movie find(String title) throws Error {
 		int i = 0;
 		while (i < this.movies.size() && !this.movies.get(i).getTitle().equals(title)) {
@@ -33,14 +39,23 @@ public class Library {
 		}
 	}
 	
+	/**
+	 * Adds a movie to list "movies", created from the five arguments.
+	 */
 	public void addMovie(String title, int releaseYear, String genre, String actors, String plot) {
 		this.movies.add(new Movie(title, releaseYear, genre, actors, plot));
 	}
 	
+	/**
+	 * Returns the first movie in list "movies" with the same title as the argument "title".
+	 */
 	public Movie retrieveMovie(String title) {
 		return this.find(title);
 	}
 	
+	/**
+	 * Updates the first movie in list "movies" with the same title as the argument "title".
+	 */
 	public void updateMovie(String title, String newTitle, int releaseYear, String genre, String actors, String plot) {
 		Movie movie = this.find(title);
 		movie.setTitle(newTitle);
@@ -50,6 +65,9 @@ public class Library {
 		movie.setPlot(plot);
 	}
 	
+	/**
+	 * Deletes the first movie in list "movies" with the same title as the argument "title".
+	 */
 	public void deleteMovie(String title) {
 		this.movies.remove(title);
 	}

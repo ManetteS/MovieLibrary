@@ -55,10 +55,16 @@ public class Movie {
 		this.plot = plot;
 	}
 	
+	/**
+	 * Returns a string with complete data about the movie (title, release year, genre, actors and plot).
+	 */
 	public String info() {
 		return this.getTitle()+" ("+this.getReleaseYear()+", "+this.getGenre()+") [casting: "+this.getActors()+"]: "+this.getPlot();
 	}
 	
+	/**
+	 * Returns a string with the title and the release year of the movie.
+	 */
 	@Override
 	public String toString() {
 		return this.getTitle()+" ("+this.getReleaseYear()+")";

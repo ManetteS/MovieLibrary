@@ -15,7 +15,7 @@ public class LibraryController {
 	@RequestMapping("/")
     public String showLibrary() {
         String result = "Current movies: ";
-		for (Movie movie : library.display()) {
+		for (Movie movie : library.getAll()) {
         	result += movie.toString()+" | ";
         };
         return result;
