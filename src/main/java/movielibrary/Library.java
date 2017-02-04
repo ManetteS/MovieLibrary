@@ -42,12 +42,17 @@ public class Library {
 	/**
 	 * Adds a movie to list "movies", created from the five arguments.
 	 */
-	public boolean addMovie(String title, int releaseYear, String genre, String actors, String plot) {
-		if (title.equals("") || releaseYear == 0) {
+	public boolean addMovie(String title, String releaseYear, String genre, String actors, String plot) {
+		try {
+			int year = Integer.parseInt(releaseYear);
+			if (title.equals("")) {
+				return false;
+			} else {
+				this.movies.add(new Movie(title, year, genre, actors, plot));
+				return true;
+			}
+		} catch(NumberFormatException er) {
 			return false;
-		} else {
-			this.movies.add(new Movie(title, releaseYear, genre, actors, plot));
-			return true;
 		}
 	}
 	
@@ -66,16 +71,21 @@ public class Library {
 	/**
 	 * Updates the first movie in list "movies" with the same title as the argument "title".
 	 */
-	public boolean updateMovie(String title, String newTitle, int releaseYear, String genre, String actors, String plot) {
+	public boolean updateMovie(String title, String newTitle, String releaseYear, String genre, String actors, String plot) {
 		int index = this.find(title);
-		if (index >= 0) {
+		if (index >= 0 && !title.equals("")) {
+			int year = 0;
+			try {
+				year = Integer.parseInt(releaseYear);
+			} catch(NumberFormatException er) {}
 			Movie movie = this.movies.get(index);
 			movie.setTitle(newTitle);
-			movie.setReleaseYear(releaseYear);
+			movie.setReleaseYear(year);
 			movie.setGenre(genre);
 			movie.setActors(actors);
 			movie.setPlot(plot);
 			return true;
+			
 		} else {
 			return false;
 		}

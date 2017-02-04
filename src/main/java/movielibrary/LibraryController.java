@@ -44,7 +44,7 @@ public class LibraryController {
 	@RequestMapping("/update")
     public String update(@RequestParam(value="title", defaultValue="") String title,
     		@RequestParam(value="newTitle", defaultValue="") String newTitle,
-    		@RequestParam(value="releaseYear", defaultValue="0") int releaseYear,
+    		@RequestParam(value="releaseYear", defaultValue="") String releaseYear,
     		@RequestParam(value="genre", defaultValue="") String genre,
     		@RequestParam(value="actors", defaultValue="") String actors,
     		@RequestParam(value="plot", defaultValue="") String plot) {
@@ -57,7 +57,7 @@ public class LibraryController {
 	
 	@RequestMapping("/add")
     public String add(@RequestParam(value="title", defaultValue="") String title,
-    		@RequestParam(value="releaseYear", defaultValue="0") int releaseYear,
+    		@RequestParam(value="releaseYear", defaultValue="") String releaseYear,
     		@RequestParam(value="genre", defaultValue="") String genre,
     		@RequestParam(value="actors", defaultValue="") String actors,
     		@RequestParam(value="plot", defaultValue="") String plot) {
