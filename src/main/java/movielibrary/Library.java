@@ -51,7 +51,7 @@ public class Library {
 	 */
 	public Movie retrieveMovie(String title) throws Error {
 		int index = this.find(title);
-		if (index > 0) {
+		if (index >= 0) {
 			return this.movies.get(index);
 		} else {
 			throw new Error("This movie does not exist.");
@@ -61,29 +61,31 @@ public class Library {
 	/**
 	 * Updates the first movie in list "movies" with the same title as the argument "title".
 	 */
-	public void updateMovie(String title, String newTitle, int releaseYear, String genre, String actors, String plot) {
+	public boolean updateMovie(String title, String newTitle, int releaseYear, String genre, String actors, String plot) {
 		int index = this.find(title);
-		if (index > 0) {
+		if (index >= 0) {
 			Movie movie = this.movies.get(index);
 			movie.setTitle(newTitle);
 			movie.setReleaseYear(releaseYear);
 			movie.setGenre(genre);
 			movie.setActors(actors);
 			movie.setPlot(plot);
+			return true;
 		} else {
-			throw new Error("This movie does not exist.");
+			return false;
 		}
 	}
 	
 	/**
 	 * Deletes the first movie in list "movies" with the same title as the argument "title".
 	 */
-	public void deleteMovie(String title) {
+	public boolean deleteMovie(String title) {
 		int index = this.find(title);
-		if (index > 0) {
+		if (index >= 0) {
 			this.movies.remove(index);
+			return true;
 		} else {
-			throw new Error("This movie does not exist.");
+			return false;
 		}
 	}
 }
