@@ -25,17 +25,17 @@ public class Library {
 	}
 	
 	/**
-	 * Returns the first movie in list "movies" with the same title as the argument "title".
+	 * Returns the index of the first movie in list "movies" with the same title as the argument "title".
 	 */
-	private Movie find(String title) throws Error {
+	private int find(String title) {
 		int i = 0;
 		while (i < this.movies.size() && !this.movies.get(i).getTitle().equals(title)) {
 			i++;
 		}
 		if (i == this.movies.size()) {
-			throw new Error("This movie does not exist");
+			return -1;
 		} else {
-			return this.movies.get(i);
+			return i;
 		}
 	}
 	
@@ -49,26 +49,41 @@ public class Library {
 	/**
 	 * Returns the first movie in list "movies" with the same title as the argument "title".
 	 */
-	public Movie retrieveMovie(String title) {
-		return this.find(title);
+	public Movie retrieveMovie(String title) throws Error {
+		int index = this.find(title);
+		if (index > 0) {
+			return this.movies.get(index);
+		} else {
+			throw new Error("This movie does not exist.");
+		}
 	}
 	
 	/**
 	 * Updates the first movie in list "movies" with the same title as the argument "title".
 	 */
 	public void updateMovie(String title, String newTitle, int releaseYear, String genre, String actors, String plot) {
-		Movie movie = this.find(title);
-		movie.setTitle(newTitle);
-		movie.setReleaseYear(releaseYear);
-		movie.setGenre(genre);
-		movie.setActors(actors);
-		movie.setPlot(plot);
+		int index = this.find(title);
+		if (index > 0) {
+			Movie movie = this.movies.get(index);
+			movie.setTitle(newTitle);
+			movie.setReleaseYear(releaseYear);
+			movie.setGenre(genre);
+			movie.setActors(actors);
+			movie.setPlot(plot);
+		} else {
+			throw new Error("This movie does not exist.");
+		}
 	}
 	
 	/**
 	 * Deletes the first movie in list "movies" with the same title as the argument "title".
 	 */
 	public void deleteMovie(String title) {
-		this.movies.remove(title);
+		int index = this.find(title);
+		if (index > 0) {
+			this.movies.remove(index);
+		} else {
+			throw new Error("This movie does not exist.");
+		}
 	}
 }
