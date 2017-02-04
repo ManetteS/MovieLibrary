@@ -40,4 +40,18 @@ public class LibraryController {
         	return "This movie does not exist.";
         }
     }
+	
+	@RequestMapping("/update")
+    public String update(@RequestParam(value="title", defaultValue="") String title,
+    		@RequestParam(value="newTitle", defaultValue="") String newTitle,
+    		@RequestParam(value="releaseYear", defaultValue="0") int releaseYear,
+    		@RequestParam(value="genre", defaultValue="") String genre,
+    		@RequestParam(value="actors", defaultValue="") String actors,
+    		@RequestParam(value="plot", defaultValue="") String plot) {
+        if (library.updateMovie(title,newTitle,releaseYear,genre,actors,plot)) {
+        	return "The movie '"+title+"' has been updated.";
+        } else {
+        	return "This movie does not exist.";
+        }
+    }
 }

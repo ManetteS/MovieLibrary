@@ -36,23 +36,33 @@ public class Movie {
 	}
 	
 	public void setTitle(String title) {
-		this.title = title;
+		if (!title.equals("")) {
+			this.title = title;
+		}
 	}
 	
 	public void setReleaseYear(int releaseYear) {
-		this.releaseYear = releaseYear;
+		if (releaseYear != 0) {
+			this.releaseYear = releaseYear;
+		}
 	}
 	
 	public void setGenre(String genre) {
-		this.genre = genre;
+		if (!genre.equals("")) {
+			this.genre = genre;
+		}
 	}
 	
 	public void setActors(String actors) {
-		this.actors = actors;
+		if (!actors.equals("")) {
+			this.actors = actors;
+		}
 	}
 	
 	public void setPlot(String plot) {
-		this.plot = plot;
+		if (!plot.equals("")) {
+			this.plot= plot;
+		}
 	}
 	
 	/**
