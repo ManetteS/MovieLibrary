@@ -61,7 +61,10 @@ public class LibraryController {
     		@RequestParam(value="genre", defaultValue="") String genre,
     		@RequestParam(value="actors", defaultValue="") String actors,
     		@RequestParam(value="plot", defaultValue="") String plot) {
-        library.addMovie(title,releaseYear,genre,actors,plot);
-        return "The movie '"+title+"' has been added.";
+		if (library.addMovie(title,releaseYear,genre,actors,plot)) {
+        	return "The movie '"+title+"' has been added.";
+        } else {
+        	return "The title and/or the release year were missing. The movie has not been added.";
+        }
     }
 }
