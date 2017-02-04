@@ -49,12 +49,12 @@ public class Library {
 	/**
 	 * Returns the first movie in list "movies" with the same title as the argument "title".
 	 */
-	public Movie retrieveMovie(String title) throws Error {
+	public Movie retrieveMovie(String title) {
 		int index = this.find(title);
 		if (index >= 0) {
 			return this.movies.get(index);
 		} else {
-			throw new Error("This movie does not exist.");
+			return null;
 		}
 	}
 	

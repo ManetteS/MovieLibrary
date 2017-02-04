@@ -21,10 +21,15 @@ public class LibraryController {
         };
         return result;
     }
-
+	
 	@RequestMapping("/{title}")
     public String retrieve(@PathVariable(value = "title") String title) {
-        return library.retrieveMovie(title).info();
+        Movie movie = library.retrieveMovie(title);
+		if (movie == null) {
+			return "This movie does not exist.";
+		} else {
+			return movie.info();
+		}
     }
 	
 	@RequestMapping("/delete")
