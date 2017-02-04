@@ -1,7 +1,5 @@
 package movielibrary;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class LibraryController {
 	
 	@Resource
-	private Library library;
+	private Library library = new Library();
 	
 	@RequestMapping("/")
-    public ArrayList<Movie> showLibrary() {
-        return library.display();
+    public String showLibrary() {
+        String result = "Current movies :\n";
+		for (Movie movie : library.display()) {
+        	result += movie.toString()+"\n";
+        };
+        return result;
     }
 	
 }

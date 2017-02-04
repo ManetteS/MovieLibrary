@@ -2,6 +2,9 @@ package movielibrary;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Library {
 	private ArrayList<Movie> movies;
 	
