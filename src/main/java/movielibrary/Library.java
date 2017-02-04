@@ -9,6 +9,10 @@ public class Library {
 		this.movies = new ArrayList<Movie>();
 	}
 	
+	public ArrayList<Movie> display() {
+		return movies;
+	}
+	
 	public void addMovie(String title, int releaseYear, String genre, String actors, String plot) {
 		this.movies.add(new Movie(title, releaseYear, genre, actors, plot));
 	}
